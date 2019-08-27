@@ -12,6 +12,8 @@ puts 'Creating seeds users...'
 
 users = []
 
+puts "Created user Aria Stark"
+
 users << {
     first_name: 'Aria',
     last_name: 'Star',
@@ -19,8 +21,6 @@ users << {
     password: '123456',
     email: 'ariastark@mat3rial_unicorn.com'
   }
-
-puts "Creating user Aria Stark"
 
 name_array = []
 
