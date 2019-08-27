@@ -6,6 +6,12 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  # def search
+  #   # take a query string from the form on the root page, query our database for that string and return it on a different page
+  #   @query = params[:query]
+  #   @items = Item.where("category like ?", "%#{@query}%")
+  # end
+
   def show
     # show a specific item on click
     @item = Item.find(params[:id])

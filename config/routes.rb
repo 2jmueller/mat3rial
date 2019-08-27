@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :users, except: [:show, :index, :new]
   resources :items
+  get 'search', to: 'pages#search'
   resources :transactions, except: [:edit, :update, :destroy]
 end

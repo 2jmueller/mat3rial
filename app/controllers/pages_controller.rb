@@ -1,6 +1,18 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: :home
+
+  # skip_before_action :authenticate_user!, only: [:home, :search, :show]
   def home
   end
-  # comment commit test
+
+  def search
+    # take a query string from the form on the root page, query our database for that string and return it on a different page
+    @query = params[:query]
+    @items = Item.where("category like ?", "%#{@query}%")
+    # if @items.length < 3
+    #   @items = Item.where("title like ?", "%#{@query}%")
+    # else
+    #   @items
+    # end
+    # return @items
+  end
 end

@@ -1,1 +1,4 @@
-<%= link_to "items", items_path %>
+<form action="/search" method="get">
+  <input type="text" name="query" placeholder="Search for an item">
+  <input type="submit">
+</form>

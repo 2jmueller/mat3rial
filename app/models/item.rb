@@ -4,4 +4,5 @@ class Item < ApplicationRecord
   # VALIDATABLE_ATTRS = Item.attribute_names.reject { |attr| NON_VALIDATABLE_ATTRS.include?(attr) }
   # validates_presence_of VALIDATABLE_ATTRS
   validates :sold, default: false
+  mount_uploader :photo, PhotoUploader
 end
