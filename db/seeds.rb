@@ -1,7 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-
 # creates an Aria Stark user plus 10 random users
 # if a seeding fails it is due to repetition in the email (having mutiple exact same names)
 
