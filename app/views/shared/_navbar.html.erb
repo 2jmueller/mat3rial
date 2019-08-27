@@ -1,11 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon w3-top">
   <div class="navbar-brand-name">
-    Mat<strong>3R</strong>ial
+    <%= link_to root_path do %>
+      Mat<strong>3R</strong>ial
+    <% end %>
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <%= link_to '/' do %>
+        <%= link_to new_user_session_path do %>
          Log in
         <% end %>
       </li>
