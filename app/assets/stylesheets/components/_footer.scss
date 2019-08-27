@@ -11,6 +11,7 @@ div {
   height: 50px;
   bottom: 0;
   position: absolute;
+  justify-content: space-evenly;
 }
 
 .footer-social-links a {
@@ -24,7 +25,6 @@ div {
 .footer-main-links {
     display: flex;
     flex-grow: 0.5;
-    justify-content: space-between;
 }
 
 .footer-main-links a {
@@ -52,4 +52,5 @@ div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
 }
