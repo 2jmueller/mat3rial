@@ -45,7 +45,10 @@ name_array = []
       remote_photo_url: user_photo_url
     }
     puts "      << user added"
+  else
+    puts "\n -----!!repeted same name!!----- \n"
   end
+  name_array.uniq!
 }
 # puts "if a seeding fails it is due to repetition in the email (having mutiple exact same names)"
 User.create!(users)

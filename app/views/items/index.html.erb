@@ -1,0 +1,36 @@
+<div class="banner-image">
+  <div class="input-group flex-nowrap search-bar">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="addon-wrapping">Search</span>
+    </div>
+    <input type="text" class="form-control" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping">
+  </div>
+</div>
+
+<h2>list of items</h2>
+
+<div class="all-item-cards">
+  <% @items.each do |item| %>
+
+    <% if item.sold? %>
+        <p>☑</p>
+      <% else %>
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3><%= link_to item.title, item_path(item)%></h3>
+            <h4><%= item.description %></h4>
+            <h5><%= item.price %>€</h5>
+            <p><%= item.location %></p>
+            <p><%= item.category %></p>
+          </div>
+        </div>
+      <% end %>
+
+
+
+    <%#= link_to " 🗑", delete_path(task), method: :delete,
+        data:{confirm: "are you sure?"}%>
+  <% end %>
+ </div>
+<%#= link_to "+ create new task", tasks_new_path%>
