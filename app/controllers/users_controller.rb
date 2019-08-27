@@ -1,25 +1,25 @@
 class UsersController < ApplicationController
-  def index
-    # list all the items in the database
-    @users = User.all
-  end
+  # def index
+  #   # list all the items in the database
+  #   @users = User.all
+  # end
 
-  def show
-    # show a specific User on click
-    @user = User.find(params[:id])
-  end
+  # def show
+  #   # show a specific User on click
+  #   @user = User.find(params[:id])
+  # end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def create
-    # creates new instance with the params, saves it, and redirects to
-    # user profile page
-    @user = User.new(user_params)
-    @user.save
-    # redirect to user items list.
-  end
+  # def create
+  #   # creates new instance with the params, saves it, and redirects to
+  #   # user profile page
+  #   @user = User.new(user_params)
+  #   @user.save
+  #   # redirect to user items list.
+  # end
 
   def edit
     @user = User.find(params[:id])
