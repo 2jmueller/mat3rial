@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_150612) do
     t.string "category"
     t.float "price"
     t.string "location"
-    t.boolean "sold"
+    t.boolean "sold", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
