@@ -17,7 +17,7 @@ puts "Created user Aria Stark"
 users << {
     first_name: 'Aria',
     last_name: 'Star',
-    user_location: 'Winterfel',
+    user_location: 'University of Winterfel',
     password: '123456',
     email: 'ariastark@mat3rial_unicorn.com'
   }
@@ -36,13 +36,14 @@ name_array = []
     # puts "** Generating user #{f_name +" "+ l_name}"
 
     puts "   ** #{f_name +" "+ l_name}"
-
+    user_photo_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922525/Brad_mpmfwz.jpg"
     users << {
       first_name: f_name,
       last_name: l_name,
       user_location:      ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
       password:           "123456",
-      email:              "#{username}@mat3rial_unicorn.com"
+      email:              "#{username}@mat3rial_unicorn.com",
+      remote_photo_url: user_photo_url
     }
     puts "      << user added"
   end
@@ -62,6 +63,7 @@ Item.destroy_all
 puts 'Creating seeds Items...'
 items = []
 
+stationary_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922180/Stationary_p3ikbs.jpg"
 10.times {
   items << {
     description: ['beatuiful state', 'like new, 9.75 x 7.5', 'N/A', 'Black'].sample,
@@ -70,6 +72,7 @@ items = []
     location: ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
     user_id: User.all.sample.id,
     title: ['Staples Composition Notebook', 'Texas Instruments TI-84', 'Crayola® Crayons, 24/Box', 'Hammermill Copy Plus', 'Post-it® Super Sticky Notes'].sample,
+    remote_photo_url: stationary_url
   }
 }
 Item.create!(items)
