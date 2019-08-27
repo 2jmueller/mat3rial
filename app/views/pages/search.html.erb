@@ -1,0 +1,7 @@
+<%= link_to "Back", root_path %>
+<div class= "results">
+  <h2> These are the items that we found for you:</h2>
+  <% @items.each do |item| %>
+    <li><%= item.title %> (<%=item.category%>)</li>
+  <% end %>
+</div>
