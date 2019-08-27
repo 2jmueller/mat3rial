@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :category
       t.float :price
       t.string :location
-      t.boolean :sold
+      t.boolean :sold, default: false
       t.references :user, foreign_key: true
 
       t.timestamps
