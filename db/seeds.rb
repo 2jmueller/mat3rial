@@ -24,7 +24,7 @@ users << {
 
 name_array = []
 
-10.times {
+20.times {
 
   f_name = ['Joao', 'Antonio', 'Julius', 'Rita', 'Ijoline', 'Karim'].sample
   l_name = ['Muller', 'Laia', 'Ussene', 'Homphomsiltham', 'Oliveira', 'Fernandes', 'Sousa'].sample
@@ -35,7 +35,7 @@ name_array = []
   if name_array == name_array.uniq
     # puts "** Generating user #{f_name +" "+ l_name}"
 
-    puts "      ** #{f_name +" "+ l_name}"
+    puts "   ** #{f_name +" "+ l_name}"
 
     users << {
       first_name: f_name,
