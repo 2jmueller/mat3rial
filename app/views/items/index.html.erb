@@ -2,7 +2,7 @@
   <div class="input-group flex-nowrap search-bar justify-content-between" style="width: 900px">
     <form class="form-inline" action="/search", method="get">
       <div class="form-row align-items-center">
-        <input type="text" class="form-control flex-grow" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping" style="width: 700px">
+        <input type="text" name="query" class="form-control flex-grow" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping" style="width: 700px">
         <div class="col-auto">
           <button type="submit" class="btn btn-success">Search</button>
         </div>
@@ -38,5 +38,5 @@
     <%#= link_to " 🗑", delete_path(task), method: :delete,
         data:{confirm: "are you sure?"}%>
   <% end %>
- </div>
+</div>
 <%#= link_to "+ create new task", tasks_new_path%>
