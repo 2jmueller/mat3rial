@@ -1,0 +1,12 @@
+.card-info{
+  margin: 15px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  width: 300px;
+  // box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.card-info:hover{
+  margin: 15px;
+  // box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
