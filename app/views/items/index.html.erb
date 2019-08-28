@@ -1,5 +1,5 @@
 <div class="banner-image">
-  <div class="input-group flex-nowrap search-bar">
+  <div class="input-group flex-nowrap search-bar" style="width: 900px">
     <div class="input-group-prepend">
       <span class="input-group-text" id="addon-wrapping">Search</span>
     </div>
@@ -7,18 +7,19 @@
   </div>
 </div>
 
-<h2>list of items</h2>
-
-<div class="all-item-cards">
+<div class="text-left mx-5 my-3">
+  <h2>List of material</h2>
+</div>
+<div class="all-item-cards mx-1">
   <% @items.each do |item| %>
 
     <% if item.sold? %>
         <p>☑</p>
       <% else %>
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h3><%= link_to item.title, item_path(item)%></h3>
+          <%= cl_image_tag item.photo %>
+          <div class="card-body d-flex flex-column justify-content-end">
+            <h4><%= link_to item.title, item_path(item)%></h3>
             <h4><%= item.description %></h4>
             <h5><%= item.price %>€</h5>
             <p><%= item.location %></p>

@@ -7,7 +7,14 @@
 
 .card{
   margin: 15px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  // box-shadow: 3px 3px 5px 6px #ccc;
+}
 
+.card:hover{
+  margin: 15px;
+  // box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  box-shadow: 3px 3px 5px 6px #ccc;
 }
 
 .banner-image{
@@ -24,6 +31,7 @@
 
 .input-group-prepend{
   height: 2.4rem;
+  margin:auto;
 }
 
 .input-group-text {
@@ -35,5 +43,7 @@
 .search-bar{
   align-items: flex-end;
   padding: 50px;
+  width: 900px;
+  margin: auto;
   margin-bottom: 50px;
 }
