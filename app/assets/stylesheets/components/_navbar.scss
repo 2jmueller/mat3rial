@@ -38,8 +38,25 @@
   color: white;
   font-size: 14px;
 }
+
+#dropdownMenuButton{
+  margin: 0;
+}
+
+.nav-item-dd {
+  padding-right:15px;
+  padding-left: 15px;
+  // padding-bottom:10px;
+  color: white;
+  font-size: 14px;
+}
+
 .nav-item a {
   color: white;
 
 }
 
+.dropdown-menu.show {
+    display: block;
+    background-color: #53AF50;
+}
