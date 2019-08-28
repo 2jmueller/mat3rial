@@ -15,7 +15,7 @@ puts "Created user Aria Stark"
 
 users << {
     first_name: 'Aria',
-    last_name: 'Star',
+    last_name: 'Stark',
     user_location: 'University of Winterfel',
     password: '123456',
     email: 'ariastark@mat3rial.com'
