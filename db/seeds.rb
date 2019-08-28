@@ -18,7 +18,7 @@ users << {
     last_name: 'Star',
     user_location: 'University of Winterfel',
     password: '123456',
-    email: 'ariastark@mat3rial_unicorn.com'
+    email: 'ariastark@mat3rial.com'
   }
 
 name_array = []
@@ -41,7 +41,7 @@ name_array = []
       last_name: l_name,
       user_location:      ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
       password:           "123456",
-      email:              "#{username}@mat3rial_unicorn.com",
+      email:              "#{username}@mat3rial.com",
       remote_photo_url: user_photo_url
     }
     puts "      << user added"
