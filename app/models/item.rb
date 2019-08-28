@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   validates :photo, presence: true
   validates :sold, default: false
   mount_uploader :photo, PhotoUploader
-
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
   ITEM_TYPES = %w[Tools Electronic Paper Stationary Paint Other]
 end
