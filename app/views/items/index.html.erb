@@ -1,13 +1,17 @@
 <div class="banner-image">
-  <div class="input-group flex-nowrap search-bar" style="width: 900px">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="addon-wrapping">Search</span>
-    </div>
-    <input type="text" class="form-control" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping">
+  <div class="input-group flex-nowrap search-bar justify-content-between" style="width: 900px">
+    <form class="form-inline" action="/search", method="get">
+      <div class="form-row align-items-center">
+        <input type="text" class="form-control fle-grow" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping" style="width: 700px">
+        <div class="col-auto">
+          <button type="submit" class="btn btn-success">Search</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
-<div class="text-left mx-5 my-3">
+<div class="text-left mx-5 mt-5">
   <h2>List of material</h2>
 </div>
 <div class="all-item-cards mx-1">
