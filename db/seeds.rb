@@ -5,6 +5,7 @@
 # if a seeding fails it is due to repetition in the email (having mutiple exact same names)
 
 puts 'Cleaning user table...'
+Item.destroy_all
 User.destroy_all
 
 puts 'Creating seeds users...'
