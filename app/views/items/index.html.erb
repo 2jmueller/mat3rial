@@ -1,17 +1,17 @@
 <div class="banner-image">
-  <div class="input-group flex-nowrap search-bar" style="width: 900px">
+  <div class="input-group flex-nowrap search-bar justify-content-between" style="width: 900px">
     <form class="form-inline" action="/search", method="get">
       <div class="form-row align-items-center">
-        <input type="text" class="form-control" placeholder="find what you are looking for" name="query" aria-label="text" aria-describedby="addon-wrapping">
+        <input type="text" class="form-control flex-grow" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping" style="width: 700px">
         <div class="col-auto">
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-success">Search</button>
         </div>
       </div>
     </form>
   </div>
 </div>
 
-<div class="text-left mx-5 my-3">
+<div class="text-left mx-5 mt-5">
   <h2>List of material</h2>
 </div>
 <div class="all-item-cards mx-1">
@@ -23,11 +23,12 @@
         <div class="card" style="width: 18rem;">
           <%= cl_image_tag item.photo %>
           <div class="card-body d-flex flex-column justify-content-end">
-            <h4><%= link_to item.title, item_path(item)%></h3>
-            <h4><%= item.description %></h4>
+            <h4><%= link_to item.title, item_path(item), class: "text-success"%></h4>
+            <h5><%= item.description %></h5>
             <h5><%= item.price %>€</h5>
-            <p><%= item.location %></p>
-            <p><%= item.category %></p>
+            <p><i class="fas fa-toolbox text-muted pr-2"></i><%= item.category %></p>
+            <p><i class="fas fa-map-marker-alt text-muted pr-2"></i><%= item.location %></p>
+
           </div>
         </div>
       <% end %>
