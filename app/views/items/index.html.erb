@@ -1,9 +1,13 @@
 <div class="banner-image">
   <div class="input-group flex-nowrap search-bar" style="width: 900px">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="addon-wrapping">Search</span>
-    </div>
-    <input type="text" class="form-control" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping">
+    <form class="form-inline" action="/search", method="get">
+      <div class="form-row align-items-center">
+        <input type="text" class="form-control" placeholder="find what you are looking for" aria-label="text" aria-describedby="addon-wrapping">
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
