@@ -69,7 +69,7 @@ stationary_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922180/
 10.times {
   items << {
     description: ['beatuiful state', 'like new, 9.75 x 7.5', 'N/A', 'Black'].sample,
-    category: ['tools', 'electronic', 'paper', 'stationary', 'paint/ink'].sample,
+    category: Item::ITEM_TYPES.sample,
     price: "#{(rand * 10_000).floor / 100}",
     location: ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
     user_id: User.all.sample.id,

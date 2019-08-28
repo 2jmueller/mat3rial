@@ -18,14 +18,19 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
     # creates new instance with the params, saves it, and redirects to
     # user profile page
     @item = Item.new(item_params)
-    @item.save
+    @item.user = current_user
+    if @item.save
+      redirect_to root_path, notice: "Item created sucessfuly"
+    else
+      render :new
+    end
     # redirect to user items list.
   end
 
@@ -49,6 +54,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :category, :price, :location)
+    params.require(:item).permit(:title, :description, :category, :price, :location, :photo)
   end
 end
