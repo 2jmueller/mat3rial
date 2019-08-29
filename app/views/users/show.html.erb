@@ -38,10 +38,10 @@
             <td>
               <% if item.transactions.where(status: 'pending').any? %>
                 <p>Pending your approval
-                  <%= link_to accept_item_transaction_path(item.transactions.where(status: 'pending').first), method: :patch do%>
+                  <%= link_to accept_item_transaction_path(item, item.transactions.where(status: 'pending').where(user: current_user).last), method: :patch do%>
                     <i class="fas fa-check-circle text-success"></i>
                   <% end %>
-                  <%= link_to "#" do%>
+                  <%= link_to decline_item_transaction_path(item, item.transactions.where(status: 'pending').where(user: current_user).last), method: :patch do%>
                     <i class="fas fa-times-circle text-danger"></i>
                   <% end %>
                 </p>
