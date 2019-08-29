@@ -24,7 +24,7 @@ class TransactionsController < ApplicationController
 
   private
 
-  def transcation_params
-    params.require(:transactions).permit(:user_id, :item_id)
+  def transaction_params
+    params.require(:transactions).permit(:user_id, :item_id, :status)
   end
 end

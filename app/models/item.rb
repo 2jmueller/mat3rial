@@ -14,5 +14,15 @@ class Item < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_description_and_category,
+    against: [
+      [:title, 'A'],
+      [:category, 'B'],
+      [:description, 'C']
+    ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
   ITEM_TYPES = %w[Tools Electronic Paper Stationary Paint Other]
 end
