@@ -45,21 +45,21 @@
 
           <!-- if there is an accepted transaction -->
           <% if @item.transactions.where(status: "accepted").any? %>
-            <div class="card-body d-flex justify-content-between">
-            <%= link_to 'sold', "#", class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
-            <%= link_to 'See Location', '/', class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
+            <div class="card-body d-flex justify-content-center">
+            <%= link_to 'sold', "#", class: "btn btn-outline-secondary disabled btn-sm btn-block p-2", style:"width:100%"%>
+            <%# link_to 'See Location', '/', class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
             </div>
           <!-- elsif there is a pending transaction -->
           <% elsif @item.transactions.where(status: "pending").any? %>
-            <div class="card-body d-flex justify-content-between">
-            <%= link_to 'Pending', "#", class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
-            <%= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
+            <div class="card-body d-flex justify-content-center">
+            <%= link_to 'Pending', "#", class: "btn btn-outline-secondary disabled btn-sm btn-block p-2", style:"width:100%"%>
+            <%#= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
             </div>
           <!-- else, if there are no transactions, or only declined ones then its business as usual -->
           <% else %>
-            <div class="card-body d-flex justify-content-between">
-              <%= link_to 'Request', item_transactions_path(@item), method: :post, class: "btn btn-success btn-sm py-2 px-4"%>
-              <%= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
+            <div class="card-body d-flex justify-content-center">
+              <%= link_to 'Request', item_transactions_path(@item), method: :post, class: "btn btn-success btn-sm btn-block p-2", style:"width:100%"%>
+              <%#= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
             </div>
           <% end %>
 
@@ -75,7 +75,7 @@
             <h5>Seller</h5>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body ">
           <p><i class="fas fa-user text-muted pr-2"></i><%= @item.user.first_name %> <%= @item.user.last_name %></p>
           <p><i class="fas fa-map-marker-alt text-muted pr-2"></i>from <%= @item.location %></p>
           <div class="pt-1">
