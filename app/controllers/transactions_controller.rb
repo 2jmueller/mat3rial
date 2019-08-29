@@ -26,13 +26,17 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @transaction.status = "accepted"
     @transaction.save
-    redirect_to user_path, notice: "transaction accepted"
+    @item = Item.find(params[:item_id])
+    @item.sold = true
+    @item.save
+    redirect_to user_path(current_user), notice: "transaction accepted"
   end
 
   def decline
-    @transaction = item.transactions.where(status: 'pending')
+    @transaction = Transaction.find(params[:id])
     @transaction.status = "decline"
     @transaction.save
+    redirect_to user_path(current_user), notice: "transaction declined"
   end
 
   private
