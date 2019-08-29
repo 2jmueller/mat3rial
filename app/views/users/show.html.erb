@@ -1,9 +1,52 @@
 <div class="container my-5">
   <div>
 
-    <h1> Welcome <%= @user.first_name %> !
-    </h1>
+    <h1> Welcome <%= @user.first_name %> !</h1>
+<!-- Section: list of item to sell -->
 
+    <h2>Current items on sell</h2>
+
+<!-- table for Items on sell -->
+    <div class="card shadow-none">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Reference</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Location</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Posting date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+<!-- body of item on sell -->
+        <% @user.items.each do |item| %>
+        <tbody>
+          <tr>
+            <th scope="row"><%= item.id %></th>
+            <td><%= cl_image_tag item.photo, class:"item-photo" %></td>
+            <td><%= item.title %></td>
+            <td><%= item.category%></td>
+            <td><%= item.location %></td>
+            <td><%= item.price %> euros</td>
+            <td><% if (item.description.first.length > 100) %>
+        <%= item.description.first(100)+"..."%>
+      <% else %>
+        <%= item.description %>
+      <% end %></td>
+            <td><%= item.created_at.strftime("%Y-%m-%d") %> euros</td>
+            <td><%= item.sold %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+<!-- end of the Items on sell table -->
+
+<!-- Section: Historical purchase -->
     <h2>Historical purchases</h2>
 
 <!-- table for historical purchase -->
