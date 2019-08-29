@@ -24,7 +24,7 @@
           <%= cl_image_tag item.photo %>
           <div class="card-body d-flex flex-column justify-content-end">
             <h4><%= link_to item.title, item_path(item), class: "text-success"%></h4>
-            <h5><%= item.description %></h5>
+            <h5><%= item.description%></h5>
             <h5><%= item.price %>€</h5>
             <p><i class="fas fa-toolbox text-muted pr-2"></i><%= item.category %></p>
             <p><i class="fas fa-map-marker-alt text-muted pr-2"></i><%= item.location %></p>
