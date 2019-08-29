@@ -37,6 +37,10 @@ class UsersController < ApplicationController
   end
   def show
     @transactions = @user.transactions
+    @items_on_sell = @user.items.where(sold: false)
+    @items_sold = @user.items.where(sold: true)
+    @transactions_pending = @transactions.where(status: "pending")
+    @transactions_past = @transactions.where(status: "accepted"||"decline")
   end
   private
 

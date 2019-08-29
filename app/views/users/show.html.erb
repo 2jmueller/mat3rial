@@ -9,60 +9,16 @@
     </div>
 
 <!-- table for Items on sell -->
-    <div class="card shadow-none">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Ref no.</th>
-            <th scope="col">Picture</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Location</th>
-            <th scope="col">Price</th>
-
-            <th scope="col">Posting date</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-<!-- body of item on sell -->
-        <% @user.items.where(sold: false).each do |item| %>
-        <tbody>
-          <tr>
-            <th scope="row"><%= item.id %></th>
-            <td><%= cl_image_tag item.photo, class:"item-photo" %></td>
-            <td><%= item.title %></td>
-            <td><%= item.category%></td>
-            <td><%= item.location %></td>
-            <td><%= item.price %> €</td>
-            <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
-            <td>
-              <% if item.transactions.where(status: 'pending').any? %>
-                <p>Pending your approval
-                  <%= link_to accept_item_transaction_path(item.transactions.where(status: 'pending').first), method: :patch do%>
-                    <i class="fas fa-check-circle text-success"></i>
-                  <% end %>
-                  <%= link_to "#" do%>
-                    <i class="fas fa-times-circle text-danger"></i>
-                  <% end %>
-                </p>
-
-              <% else %>
-                <p>For sell</p>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+ <%= render 'table_for_sell', items: @items_on_sell %>
 <!-- end of the Items on sell table -->
+
 
 <!-- Section: pending purchases -->
     <div class="px-3">
       <h2>Pending purchases</h2>
     </div>
 <!-- table for pending purchase -->
-    <%= render 'table_for_buy', transactions: @transactions.where(status: "pending") %>
+    <%= render 'table_for_buy', transactions: @transactions_pending %>
 <!-- end of the pending purchase table -->
 
 
@@ -72,7 +28,7 @@
     </div>
 
 <!-- table for historical sold items -->
-  <%= render 'table_for_sell', items: @user.items.where(sold: true) %>
+  <%= render 'table_for_sell', items: @items_sold %>
 <!-- end of the sold items table -->
 
 
@@ -81,7 +37,7 @@
       <h2>Historic of purchases</h2>
     </div>
 <!-- table for historical purchases -->
-  <%= render 'table_for_buy', transactions: @transactions.where(status: "accepted") %>
+  <%= render 'table_for_buy', transactions: @transactions_past %>
 <!-- end of the purchases table -->
   </div>
 </div>
