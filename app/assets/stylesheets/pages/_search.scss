@@ -17,3 +17,28 @@
 .card-img-left {
   height: 100%;
 }
+
+.search-link-back {
+  position: relative;
+}
+
+.filter-list {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.filter-item {
+  list-style: none;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+.filter-item-content {
+  position: relative;
+  margin: 0 8px 8px 0;
+}
