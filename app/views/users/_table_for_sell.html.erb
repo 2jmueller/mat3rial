@@ -1,0 +1,51 @@
+<div class="card shadow-none">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ref no.</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Location</th>
+        <th scope="col">Price</th>
+        <th scope="col">Posting date</th>
+        <th scope="col">Details</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+<!-- body of item on sell -->
+    <% items.each do |item| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= item.id %></th>
+        <td><%= cl_image_tag item.photo, class:"item-photo" %></td>
+        <td><%= item.title %></td>
+        <td><%= item.category%></td>
+        <td><%= item.location %></td>
+        <td><%= item.price %> €</td>
+        <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
+        <td>
+          <%= link_to item_path(item) do %>
+                <p><i class="fas fa-glasses text-muted"></i></p>
+              <% end %>
+        </td>
+        <td>
+          <% if item.transactions.where(status: 'pending').any? %>
+            <p>Pending your approval
+              <%= link_to accept_item_transaction_path(item.transactions.where(status: 'pending').first), method: :patch do%>
+                <i class="fas fa-check-circle text-success"></i>
+              <% end %>
+              <%= link_to "#" do%>
+                <i class="fas fa-times-circle text-danger"></i>
+              <% end %>
+            </p>
+
+          <% else %>
+            <p>For sell</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

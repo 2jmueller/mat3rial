@@ -1,0 +1,40 @@
+<div class="card shadow-none">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ref no.</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Location</th>
+        <th scope="col">Price</th>
+        <th scope="col">Date of purchase</th>
+        <th scope="col">Details</th>
+        <th scope="col">Seller</th>
+      </tr>
+    </thead>
+
+<!-- body of the table -->
+    <% transactions.each do |transaction| %>
+      <tbody>
+        <tr>
+          <th scope="row"><%= transaction.item.id %></th>
+            <td><%= cl_image_tag transaction.item.photo, class:"item-photo" %></td>
+            <td><%= transaction.item.title %></td>
+            <td><%= transaction.item.category%></td>
+            <td><%= transaction.item.location %></td>
+            <td><%= transaction.item.price %> €</td>
+            <td><%= transaction.item.updated_at.strftime("%Y-%m-%d") %></td>
+            <td>
+              <%= link_to item_path(transaction.item) do %>
+                <p><i class="fas fa-glasses text-muted"></i></p>
+              <% end %>
+            </td>
+            <td><%= transaction.item.user.first_name %>
+                <%= transaction.item.user.last_name %>
+            </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
