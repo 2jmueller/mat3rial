@@ -19,7 +19,7 @@ const initMapbox = () => {
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-    //   const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
 
     //   // Create a HTML element for your custom marker
     //   const element = document.createElement('div');
@@ -29,16 +29,16 @@ const initMapbox = () => {
     //   element.style.width = '25px';
     //   element.style.height = '25px';
 
-    //   new mapboxgl.Marker(element)
-    //     .setLngLat([ marker.lng, marker.lat ])
-    //     .setPopup(popup) // add this
-    //     .addTo(map);
-    // });
-
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map)
+        .setPopup(popup) // add this
+        .addTo(map);
     });
+
+    //   new mapboxgl.Marker()
+    //     .setLngLat([ marker.lng, marker.lat ])
+    //     .addTo(map)
+    // });
 
     fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
