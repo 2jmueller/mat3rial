@@ -7,18 +7,13 @@ class PagesController < ApplicationController
   def search
     # take a query string from the form on the root page, query our database for that string and return it on a different page
     @query = params[:query]
-    @items = Item.where("category like ?", "%#{params[:query]}%").geocoded
+    @items = Item.search_by_title_and_description_and_category(@query).geocoded
     @markers = @items.map do |item|
       {
         lat: item.latitude,
-        lng: item.longitude
+        lng: item.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { item: item })
       }
     end
-    # if @items.length < 3
-    #   @items = Item.where("title like ?", "%#{@query}%")
-    # else
-    #   @items
-    # end
-    # return @items
   end
 end

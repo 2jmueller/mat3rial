@@ -40,11 +40,32 @@
               <p><%= @item.price %> €</p>
             </div>
           </div>
-          <div class="card-body d-flex justify-content-between">
-            <%= link_to 'Request', '/', class: "btn btn-success btn-sm py-2 px-4"%>
+
+          <!-- conditional function to prevent the creation of multiple by requests -->
+
+          <!-- if there is an accepted transaction -->
+          <% if @item.transactions.where(status: "accepted").any? %>
+            <div class="card-body d-flex justify-content-between">
+            <%= link_to 'sold', "#", class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
+            <%= link_to 'See Location', '/', class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
+            </div>
+          <!-- elsif there is a pending transaction -->
+          <% elsif @item.transactions.where(status: "pending").any? %>
+            <div class="card-body d-flex justify-content-between">
+            <%= link_to 'Pending', "#", class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
             <%= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
-          </div>
-        </div>
+            </div>
+          <!-- else, if there are no transactions, or only declined ones then its business as usual -->
+          <% else %>
+            <div class="card-body d-flex justify-content-between">
+              <%= link_to 'Request', item_transactions_path(@item), method: :post, class: "btn btn-success btn-sm py-2 px-4"%>
+              <%= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
+            </div>
+          <% end %>
+
+
+
+
       <div class="card-info">
         <div class="card-header text-capitalize text-muted d-flex align-content-center">
           <div class="container-avatar pr-3">
@@ -62,7 +83,7 @@
           </div>
         </div>
       </div>
-    </div>
+
 
   </div>
 </div>

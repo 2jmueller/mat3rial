@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <div>
+    <div class ="px-3">
+
+      <h1> Welcome <%= @user.first_name %> !</h1>
+  <!-- Section: list of item to sell -->
+
+      <h2>Current items on sell</h2>
+    </div>
+
+<!-- table for Items on sell -->
+ <%= render 'table_for_sell', items: @items_on_sell %>
+<!-- end of the Items on sell table -->
+
+
+
+<!-- Section: pending purchases -->
+    <div class="px-3">
+      <h2>Pending purchases</h2>
+    </div>
+<!-- table for pending purchase -->
+    <%= render 'table_for_buy', transactions: @transactions_pending %>
+<!-- end of the pending purchase table -->
+
+
+<!-- Section: Historical sold items -->
+    <div class="px-3">
+      <h2>Historic of sold items</h2>
+    </div>
+
+<!-- table for historical sold items -->
+  <%= render 'table_for_sell', items: @items_sold %>
+<!-- end of the sold items table -->
+
+
+<!-- Section: Historical purchase -->
+    <div class ="px-3" >
+      <h2>Historic of purchases</h2>
+    </div>
+<!-- table for historical purchases -->
+  <%= render 'table_for_buy', transactions: @transactions_past %>
+<!-- end of the purchases table -->
+  </div>
+</div>

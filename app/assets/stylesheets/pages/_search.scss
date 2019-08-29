@@ -3,3 +3,17 @@
   position: sticky;
   top: 0;
 }
+
+.card-all-results {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card-results {
+  flex-grow: 1;
+  margin: 15px;
+}
+
+.card-img-left {
+  height: 100%;
+}
