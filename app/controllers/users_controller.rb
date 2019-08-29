@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :fetch_user, only: %i(edit update destroy show)
   # def index
   #   # list all the items in the database
   #   @users = User.all
@@ -22,25 +23,27 @@ class UsersController < ApplicationController
   # end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
     # finds the User to update by id and updates it with the necessary params
-    @user = User.find(params[:id])
     @user.update(item_params)
   end
 
   def destroy
     # finds by id and deletes User
-    @user = User.find(params[:id])
     @user.destroy
     # redirect to user profile page
   end
-
+  def show
+    @transactions = @user.transactions
+  end
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :user_location, :email)
+  end
+  def fetch_user
+    @user = User.find(params[:id])
   end
 end
