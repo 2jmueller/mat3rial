@@ -26,17 +26,17 @@
       <h5 class="text-center text-white-50 pb-4">and save the planet :)</h5>
     </div>
     <div class="input-group input-group-lg flex-nowrap search-bar justify-content-between mt-5">
-      <input type="text" name="query" class="form-control flex-grow" placeholder="find what you are looking for" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
       <form class="form-inline form-lg" action="/search", method="get">
+        <input type="text" name="query" class="form-control flex-grow" placeholder="find what you are looking for" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         <div class="form-row align-items-center">
           <button type="submit" class="btn btn-success btn-lg px-4">Search</button>
         </div>
+      </form>
         <div>
           <!-- <a href="new_item_path" class="btn btn-success btn-lg active ml-3" role="button" aria-pressed="true">Sell item</a> -->
           <%# link_to "Sell item", class: "btn btn-success btn-lg" %>
-          <%= link_to "Sell item", new_item_path, method: :get, class: "btn btn-success btn-lg active ml-3" %>
+          <%= link_to "Sell item", new_item_path, class: "btn btn-success btn-lg active ml-3" %>
         </div>
-      </form>
     </div>
   </div>
 </div>
