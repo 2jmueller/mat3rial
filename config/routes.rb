@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'items#index'
 
-  resources :users, except: [:show, :index, :new]
+  resources :users, except: [:index, :new]
   resources :items
   get 'search', to: 'pages#search'
   resources :transactions, except: [:edit, :update, :destroy]
