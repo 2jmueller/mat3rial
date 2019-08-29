@@ -1,23 +1,25 @@
 <div class="container my-5">
   <div>
+    <div class ="px-3">
 
-    <h1> Welcome <%= @user.first_name %> !</h1>
-<!-- Section: list of item to sell -->
+      <h1> Welcome <%= @user.first_name %> !</h1>
+  <!-- Section: list of item to sell -->
 
-    <h2>Current items on sell</h2>
+      <h2>Current items on sell</h2>
+    </div>
 
 <!-- table for Items on sell -->
     <div class="card shadow-none">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Reference</th>
+            <th scope="col">Ref no.</th>
             <th scope="col">Picture</th>
             <th scope="col">Title</th>
             <th scope="col">Category</th>
             <th scope="col">Location</th>
             <th scope="col">Price</th>
-            <th scope="col">Description</th>
+
             <th scope="col">Posting date</th>
             <th scope="col">Status</th>
           </tr>
@@ -31,14 +33,15 @@
             <td><%= item.title %></td>
             <td><%= item.category%></td>
             <td><%= item.location %></td>
-            <td><%= item.price %> euros</td>
-            <td><% if (item.description.first.length > 100) %>
-        <%= item.description.first(100)+"..."%>
-      <% else %>
-        <%= item.description %>
-      <% end %></td>
-            <td><%= item.created_at.strftime("%Y-%m-%d") %> euros</td>
-            <td><%= item.sold %></td>
+            <td><%= item.price %> €</td>
+            <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
+            <td><%# if @transactions.where(item_id: item.id).status.nil? %>
+                  <%# else %>
+                    <%#= @transactions.where(item_id: item.id).status %>
+                  <%# end %>
+            </td>
+
+            <td><%=  %></td>
           </tr>
         <% end %>
         </tbody>
@@ -47,18 +50,21 @@
 <!-- end of the Items on sell table -->
 
 <!-- Section: Historical purchase -->
-    <h2>Historical purchases</h2>
+    <div class ="px-3" >
+      <h2>Historical purchases</h2>
+    </div>
 
 <!-- table for historical purchase -->
     <div class="card shadow-none">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Reference</th>
+            <th scope="col">Ref no.</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
             <th scope="col">Date of purchase</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
 <!-- body of the purchase -->
@@ -71,6 +77,9 @@
             <td><%= transaction.item.description %></td>
             <td><%= transaction.item.price %> euros</td>
             <td><%= transaction.item.updated_at.strftime("%Y-%m-%d") %></td>
+            <td><%= link_to item_path(transaction.item) do %>
+                <p> <i class=“fas fa-glasses”></i> See</p>
+                <% end %></td>
           </tr>
         <% end %>
         </tbody>
