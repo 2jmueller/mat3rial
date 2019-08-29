@@ -35,10 +35,7 @@
             <td><%= item.location %></td>
             <td><%= item.price %> €</td>
             <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
-            <td><%# if @transactions.where(item_id: item.id).status.nil? %>
-                  <%# else %>
-                    <%#= @transactions.where(item_id: item.id).status %>
-                  <%# end %>
+            <td> <%=  %>
             </td>
 
             <td><%=  %></td>
@@ -49,6 +46,11 @@
     </div>
 <!-- end of the Items on sell table -->
 
+
+
+<h2>Pending purchases</h2>
+
+<h2>Sold item work in progress</h2>
 <!-- Section: Historical purchase -->
     <div class ="px-3" >
       <h2>Historical purchases</h2>
