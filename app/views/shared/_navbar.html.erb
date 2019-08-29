@@ -15,12 +15,8 @@
             <%= current_user.first_name %> <%= current_user.last_name %>
           </p>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
-              My Profile
-            </a>
-              <a class="dropdown-item" href="items/new">
-                Add listing
-              </a>
+            <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Add listing", new_item_path, class: "dropdown-item" %>
             <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </div>

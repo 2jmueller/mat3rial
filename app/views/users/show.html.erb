@@ -35,10 +35,21 @@
             <td><%= item.location %></td>
             <td><%= item.price %> €</td>
             <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
-            <td> <%=  %>
-            </td>
+            <td>
+              <% if item.transactions.where(status: 'pending').any? %>
+                <p>Pending your approval
+                  <%= link_to accept_item_transaction_path(item.transactions.where(status: 'pending').first), method: :patch do%>
+                    <i class="fas fa-check-circle text-success"></i>
+                  <% end %>
+                  <%= link_to "#" do%>
+                    <i class="fas fa-times-circle text-danger"></i>
+                  <% end %>
+                </p>
 
-            <td><%=  %></td>
+              <% else %>
+                <p>For sell</p>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
