@@ -18,6 +18,10 @@ class PagesController < ApplicationController
     end
   end
 
+  # def filter
+  #   @filter = @items.select { |item| item.category = params[:category] }
+  # end
+
   private
 
   def fetch_categories

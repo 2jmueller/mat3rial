@@ -7,21 +7,26 @@
 </div>
 <div class= "row">
   <div class="col-sm-12 col-md-12 col-lg-6">
-    <ul class= "filter-list">
-      <li class = "filter-item">
-        <div class = "filter-item-content">
-          <form class="form-inline">
-            <select id="inputState" class="form-control">
-              <option selected>Category</option>
-                <% @categories.each do |c| %>
-                  <option><%= c %></option>
-                <% end %>
-            </select>
-            <button type="submit" class="btn btn-success">Search</button>
-          </form>
-        </div>
-      </li>
-    </ul>
+    <div>
+      <h4>Refine your search</h4>
+    </div>
+    <div class= "filter-list">
+      <ul>
+        <li class = "filter-item">
+          <div class = "filter-item-content">
+            <form class="form-inline" action="search/filter" method="get">
+              <select id="inputState" class="form-control" name="category">
+                <option selected>Category</option>
+                  <% @categories.each do |c| %>
+                    <option><%= c %></option>
+                  <% end %>
+              </select>
+              <button type="submit" class="btn btn-success">Search</button>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
     <h2> These are the items that we found for you:</h2>
     <div class="card-all-results mx-1">
       <% @items.each do |item| %>
