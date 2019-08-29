@@ -22,6 +22,19 @@ class TransactionsController < ApplicationController
     redirect_to item_path(@item), flash: { success: "Transaction completed" }
   end
 
+  def accept
+    @transaction = Transaction.find(params[:id])
+    @transaction.status = "accepted"
+    @transaction.save
+    redirect_to user_path, notice: "transaction accepted"
+  end
+
+  def decline
+    @transaction = item.transactions.where(status: 'pending')
+    @transaction.status = "decline"
+    @transaction.save
+  end
+
   private
 
   def transaction_params

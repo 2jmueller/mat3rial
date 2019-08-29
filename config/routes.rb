@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :new]
 
   resources :items do
-    resources :transactions, except: [:destroy]
+    resources :transactions, except: [:destroy] do
+      member do
+        patch :accept
+        patch :decline
+      end
+    end
   end
 
   get 'search', to: 'pages#search'
