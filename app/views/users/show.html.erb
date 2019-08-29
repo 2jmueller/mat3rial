@@ -1,1 +1,39 @@
-<h1>Show page for user</h1>
+<div class="container my-5">
+  <div>
+
+    <h1> Welcome <%= @user.first_name %> !
+    </h1>
+
+    <h2>Historical purchases</h2>
+
+
+    <div class="card shadow-none">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Reference</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date of purchase</th>
+          </tr>
+        </thead>
+
+        <% @transactions.each do |transaction| %>
+        <tbody>
+          <tr>
+            <th scope="row"><%= transaction.item_id %></th>
+            <td><%= transaction.item.user.first_name %>
+                <%= transaction.item.user.last_name %></td>
+            <td><%= transaction.item.description %></td>
+            <td><%= transaction.item.price %> euros</td>
+            <td><%= transaction.item.updated_at.strftime("%Y-%m-%d") %></td>
+          </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

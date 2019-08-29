@@ -13,12 +13,12 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transcation_params)
+    @transaction = Transaction.new(transaction_params)
   end
 
   private
 
-  def transcation_params
-    params.require(:transactions).permit(:user_id, :item_id)
+  def transaction_params
+    params.require(:transactions).permit(:user_id, :item_id, :status)
   end
 end
