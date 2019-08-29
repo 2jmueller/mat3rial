@@ -3,17 +3,23 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
   end
 
+  def show
+    @transaction = Transaction.find(params[:id])
+  end
+
   def new
     @transcation = Transaction.new
     # redirect_to some page in the future
   end
 
-  def show
-    @transaction = Transaction.find(params[:id])
-  end
-
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = Transaction.new
+    @transaction.item = Item.find(params[:item_id])
+    @transaction.user = current_user
+    @transaction.save
+
+    @item = Item.find(params[:item_id])
+    redirect_to item_path(@item), flash: { success: "Transaction completed" }
   end
 
   private
