@@ -25,7 +25,7 @@
           </tr>
         </thead>
 <!-- body of item on sell -->
-        <% @user.items.each do |item| %>
+        <% @user.items.where(sold: false).each do |item| %>
         <tbody>
           <tr>
             <th scope="row"><%= item.id %></th>
@@ -46,47 +46,31 @@
     </div>
 <!-- end of the Items on sell table -->
 
+<!-- Section: pending purchases -->
+    <div class="px-3">
+      <h2>Pending purchases</h2>
+    </div>
+<!-- table for pending purchase -->
+    <%= render 'table_for_buy', transactions: @transactions.where(status: "pending") %>
+<!-- end of the pending purchase table -->
 
 
-<h2>Pending purchases</h2>
+<!-- Section: Historical sold items -->
+    <div class="px-3">
+      <h2>Historic of sold items</h2>
+    </div>
 
-<h2>Sold item work in progress</h2>
+<!-- table for historical sold items -->
+  <%= render 'table_for_sell', items: @user.items.where(sold: true) %>
+<!-- end of the sold items table -->
+
+
 <!-- Section: Historical purchase -->
     <div class ="px-3" >
-      <h2>Historical purchases</h2>
+      <h2>Historic of purchases</h2>
     </div>
-
-<!-- table for historical purchase -->
-    <div class="card shadow-none">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Ref no.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Date of purchase</th>
-            <th scope="col">Details</th>
-          </tr>
-        </thead>
-<!-- body of the purchase -->
-        <% @transactions.each do |transaction| %>
-        <tbody>
-          <tr>
-            <th scope="row"><%= transaction.item_id %></th>
-            <td><%= transaction.item.user.first_name %>
-                <%= transaction.item.user.last_name %></td>
-            <td><%= transaction.item.description %></td>
-            <td><%= transaction.item.price %> euros</td>
-            <td><%= transaction.item.updated_at.strftime("%Y-%m-%d") %></td>
-            <td><%= link_to item_path(transaction.item) do %>
-                <p> <i class=“fas fa-glasses”></i> See</p>
-                <% end %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-<!-- end of the historical purchase table -->
+<!-- table for historical purchases -->
+  <%= render 'table_for_buy', transactions: @transactions.where(status: "accepted") %>
+<!-- end of the purchases table -->
   </div>
 </div>
