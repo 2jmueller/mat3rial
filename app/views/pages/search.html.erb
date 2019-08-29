@@ -6,26 +6,21 @@
 </div>
 <div class= "row">
   <div class="col-sm-12 col-md-12 col-lg-6">
-    <div class="all-item-cards mx-1">
+    <div class="card-all-results mx-1">
       <% @items.each do |item| %>
-
-        <% if item.sold? %>
-            <p>☑</p>
-          <% else %>
-            <div class="card" style="width: 18rem;">
-              <%= cl_image_tag item.photo %>
-              <div class="card-body d-flex flex-column justify-content-end">
-                <h4><%= link_to item.title, item_path(item)%></h3>
-                <h4><%= item.description %></h4>
-                <h5><%= item.price %>€</h5>
-                <p><%= item.location %></p>
-                <p><%= item.category %></p>
-              </div>
-            </div>
-          <% end %>
+        <div class="card flex-row flex-wrap card-results">
+          <%= cl_image_tag item.photo, class: "card-img-left" %>
+          <div class="card-body d-flex flex-column justify-content-end">
+            <h4 class="card-title"><%= link_to item.title, item_path(item)%></h3>
+            <h4><%= item.description %></h4>
+            <h5><%= item.price %>€</h5>
+            <p><%= item.location %></p>
+            <p><%= item.category %></p>
+          </div>
+        </div>
+      <% end %>
       <%#= link_to " 🗑", delete_path(task), method: :delete,
           data:{confirm: "are you sure?"}%>
-      <% end %>
     </div>
   </div>
   <div class="col-sm-12 col-md-12 col-lg-6 sticky-top">
