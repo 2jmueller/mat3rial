@@ -2,10 +2,10 @@ class ItemsController < ApplicationController
   # controller actions for the Items model
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     # list all the items in the database
-    @items = Item.all
+    @items = Item.all.where(sold: false)
   end
 
   # def search
