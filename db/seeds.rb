@@ -4,7 +4,7 @@
 # creates an Aria Stark user plus 10 random users
 # if a seeding fails it is due to repetition in the email (having mutiple exact same names)
 
-require 'faker'
+# require 'faker'
 puts 'Cleaning tables users, items, transactions...'
 Item.destroy_all
 User.destroy_all
