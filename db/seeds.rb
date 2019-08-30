@@ -14,7 +14,7 @@ puts 'Creating seeds users...'
 
 users = []
 
-puts "Created user Arya Stark"
+puts "Creating user Arya Stark"
 
 users << {
     first_name: 'Arya',
@@ -26,6 +26,20 @@ users << {
   }
 
 puts "User Arya Stark created"
+
+
+puts "Creating user Rita Laia 'The Queen, Lordina of the 7 web sites"
+
+users << {
+    first_name: 'Rita',
+    last_name: 'Laia',
+    user_location: 'Universidade de Arquitectura de Lisboa',
+    password: '123456',
+    email: 'rita@mat3rial.com',
+    remote_photo_url: "https://avatars3.githubusercontent.com/u/49205729?v=4"
+  }
+
+puts "User Rita Laia 'The Queen, Lordina of the 7 web sites' created"
 
 name_array = []
 
@@ -88,7 +102,7 @@ category_array = %w[Stationary Electronic Stationary Paper Other Stationary]
     description: ['Brand new', 'Used', 'Old, but functioning'].sample,
     category: category_array[i],
     price: "#{(rand * 1000).floor / 100}",
-    location: ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School', 'Faculty of Social and Human Sciences', 'National School of Public Health', 'IST, Lisbon', 'UMC, Lisbon','Escola Politécnica de Lisboa'].sample,
+    location: ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School, Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
     user_id: User.all.sample.id,
     title: stationery_array[i],
     remote_photo_url: photo_array[i]
@@ -99,18 +113,20 @@ puts '>> Finished creating Items! <<'
 
 # -----------------------------------------------------------------------------
 
-# transaction for items
-puts 'Creating seeds transactions...'
-transactions = []
+# doing seed manualy
 
-20.times{
-  transactions << {
-    user_id: User.all.sample.id,
-    item_id: Item.all.sample.id,
-    status: %w(accepted decline pending).sample
-  }
-}
-Transaction.create!(transactions)
-puts 'Finished!'
+# transaction for items
+# puts 'Creating seeds transactions...'
+# transactions = []
+
+# 20.times{
+#   transactions << {
+#     user_id: User.all.sample.id,
+#     item_id: Item.all.sample.id,
+#     status: %w(accepted decline pending).sample
+#   }
+# }
+# Transaction.create!(transactions)
+# puts 'Finished!'
 
 
