@@ -5,7 +5,7 @@
       <h1> Welcome <%= @user.first_name %> !</h1>
   <!-- Section: list of item to sell -->
 
-      <h2>Current items on sell</h2>
+      <h2>Current items on sale</h2>
     </div>
 
 <!-- table for Items on sell -->
@@ -16,7 +16,7 @@
 
 <!-- Section: pending purchases -->
     <div class="px-3">
-      <h2>Pending purchases</h2>
+      <h2>Your pending purchases</h2>
     </div>
 <!-- table for pending purchase -->
     <%= render 'table_for_buy', transactions: @transactions_pending %>
@@ -25,7 +25,7 @@
 
 <!-- Section: Historical sold items -->
     <div class="px-3">
-      <h2>Historic of sold items</h2>
+      <h2>Your past sales</h2>
     </div>
 
 <!-- table for historical sold items -->
@@ -35,7 +35,7 @@
 
 <!-- Section: Historical purchase -->
     <div class ="px-3" >
-      <h2>Historic of purchases</h2>
+      <h2>Your past purchases</h2>
     </div>
 <!-- table for historical purchases -->
   <%= render 'table_for_buy', transactions: @transactions_past %>
