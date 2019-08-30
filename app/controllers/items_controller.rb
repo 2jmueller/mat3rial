@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # controller actions for the Items model
-  # before_action
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     # list all the items in the database
     @items = Item.all
