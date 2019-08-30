@@ -37,7 +37,7 @@
         <div>
           <!-- <a href="new_item_path" class="btn btn-success btn-lg active ml-3" role="button" aria-pressed="true">Sell item</a> -->
           <%# link_to "Sell item", class: "btn btn-success btn-lg" %>
-          <%= link_to "Sell item", new_item_path, class: "btn btn-success btn-lg active ml-3" %>
+          <%= link_to "Sell item", new_item_path, class: "btn btn-success btn-lg ml-3" %>
         </div>
     </div>
   </div>
@@ -52,8 +52,8 @@
     <% if item.sold? %>
       <% else %>
         <div class="card" style="width: 18rem;">
-          <div class="image-card">
-            <%= cl_image_tag item.photo %>
+          <div class="image-card" >
+            <%= cl_image_tag item.photo, style: "width: 17.87rem; object-fit: cover;" %>
           </div>
           <div class="card-body d-flex flex-column justify-content-around">
             <h4><%= link_to item.title, item_path(item), class: "text-success"%></h4>
