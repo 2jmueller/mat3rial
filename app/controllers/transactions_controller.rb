@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
     @transaction.save
 
     @item = Item.find(params[:item_id])
-    redirect_to item_path(@item), flash: { success: "Transaction completed" }
+    redirect_to item_path(@item), flash: { success: "Your reauest has been sent" }
   end
 
   def accept
@@ -29,14 +29,14 @@ class TransactionsController < ApplicationController
     @item = Item.find(params[:item_id])
     @item.sold = true
     @item.save
-    redirect_to user_path(current_user), notice: "transaction accepted"
+    redirect_to user_path(current_user), notice: "Your transaction has been accepted"
   end
 
   def decline
     @transaction = Transaction.find(params[:id])
     @transaction.status = "decline"
     @transaction.save
-    redirect_to user_path(current_user), notice: "transaction declined"
+    redirect_to user_path(current_user), notice: "Your transaction has been declined"
   end
 
   private
