@@ -1,0 +1,21 @@
+
+  <div class="new_item_form">
+    <h1>Update <%=@item.title%> </h1>
+    <%= simple_form_for [@item] do |f| %>
+    <div class="new_item_form_inputs">
+      <%= f.input :title, label: 'Title', input_html: { autocomplete: 'off', autofocus: true} %>
+      <%= f.input :description%>
+      <%= f.input :location%>
+      <%= f.input :price%>
+      <%= f.input :category, collection: Item::ITEM_TYPES %>
+   <!--    <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %> -->
+    </div>
+
+    <div class="new_item_form-actions">
+      <%= f.submit 'Update Item', class: 'btn btn-success btn-lg' %> <span class="button-divider">|</span>
+      <%= link_to 'Cancel', user_path(current_user), class: 'btn btn-lg btn-outline-secondary' %>
+    </div>
+  <% end %>
+</div>
+

@@ -9,7 +9,7 @@
         <th scope="col">Location</th>
         <th scope="col">Price</th>
         <th scope="col">Posting date</th>
-        <th scope="col">Details</th>
+        <th scope="col">Actions</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
@@ -27,8 +27,15 @@
         <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
         <td>
           <%= link_to item_path(item) do %>
-                <p><i class="fas fa-glasses text-muted"></i></p>
+                <i class="fas fa-glasses text-muted"></i>
               <% end %>
+          <%= link_to edit_item_path(item) do %>
+            <i class="fas fa-pen text-muted"></i>
+          <% end %>
+          <%= link_to item_path(item),
+            data: {:confirm => 'Are you sure you want to delete the item?'}, method: :delete do%>
+            <i class="fas fa-trash-alt text-muted"></i>
+          <% end %>
         </td>
         <td>
           <% if item.transactions.where(status: 'pending').any? %>
@@ -44,7 +51,7 @@
             </p>
           ​
           <% else %>
-            <p>For sell</p>
+            <p>For sale</p>
           <% end %>
         </td>
       </tr>

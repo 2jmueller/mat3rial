@@ -42,11 +42,13 @@ class UsersController < ApplicationController
     @transactions_pending = @transactions.where(status: "pending")
     @transactions_past = @transactions.where(status: "accepted"||"decline")
   end
+
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :user_location, :email)
   end
+
   def fetch_user
     @user = User.find(params[:id])
   end
