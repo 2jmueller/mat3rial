@@ -50,8 +50,10 @@
     <% if item.sold? %>
       <% else %>
         <div class="card" style="width: 18rem;">
-          <%= cl_image_tag item.photo %>
-          <div class="card-body d-flex flex-column justify-content-end">
+          <div class="image-card">
+            <%= cl_image_tag item.photo %>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-around">
             <h4><%= link_to item.title, item_path(item), class: "text-success"%></h4>
 
             <h5><%= item.price %>€</h5>
