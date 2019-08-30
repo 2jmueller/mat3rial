@@ -26,26 +26,27 @@
     <!-- item info -->
     <div class="col-sm-12 col-md-6 col-lg-4">
 
-        <div class="card-info">
-          <div class="card-header text-capitalize text-muted">
-            <h5>Item</h5>
+      <div class="card-info">
+        <div class="card-header text-capitalize text-muted">
+          <h5>Item</h5>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex justify-content-between align-middle">
+            <p class="font-weight-bold">Category</p>
+            <p><%= @item.category %></p>
           </div>
-          <div class="list-group list-group-flush">
-            <div class="list-group-item d-flex justify-content-between align-middle">
-              <p class="font-weight-bold">Category</p>
-              <p><%= @item.category %></p>
-            </div>
-            <div class="list-group-item d-flex justify-content-between align-middle">
-              <p class="font-weight-bold">Location</p>
-              <p><%= @item.location %></p>
-            </div>
-            <div class="list-group-item d-flex justify-content-between align-middle">
-              <p class="font-weight-bold">Price</p>
-              <p><%= @item.price %> €</p>
-            </div>
+          <div class="list-group-item d-flex justify-content-between align-middle">
+            <p class="font-weight-bold">Location</p>
+            <p><%= @item.location %></p>
           </div>
+          <div class="list-group-item d-flex justify-content-between align-middle">
+            <p class="font-weight-bold">Price</p>
+            <p><%= @item.price %> €</p>
+          </div>
+        </div>
 
-          <!-- conditional function to prevent the creation of multiple by requests -->
+        <!-- conditional function to prevent the creation of multiple by requests -->
+
 
           <!-- if there is an accepted transaction -->
           <% if @item.transactions.where(status: "accepted").any? %>
@@ -77,6 +78,7 @@
             </div>
           <% end %>
         </div>
+
 
       <!-- Seller info -->
       <% if user_signed_in? %>

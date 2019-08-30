@@ -3,7 +3,7 @@
     <h1><%= current_user.first_name%>'s new item </h1>
     <%= simple_form_for [@item] do |f| %>
     <div class="new_item_form_inputs">
-      <%= f.input :title, label: 'Title', input_html: { autocomplete: 'off', autofocus: true, :required => 'required' } %>
+      <%= f.input :title, label: 'Title', maxlength: 35, input_html: { autocomplete: 'off', autofocus: true, :required => 'required' } %>
       <%= f.input :description%>
       <%= f.input :location%>
       <%= f.input :price%>

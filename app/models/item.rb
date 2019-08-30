@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   # VALIDATABLE_ATTRS = Item.attribute_names.reject { |attr| NON_VALIDATABLE_ATTRS.include?(attr) }
   # validates_presence_of VALIDATABLE_ATTRS
   has_many :transactions
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 35 }
   validates :description, presence: true
   validates :location, presence: true
   validates :category, presence: true

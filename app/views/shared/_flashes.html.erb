@@ -2,7 +2,7 @@
 
 <% if key == "success" %>
 <div class="<%= flash_class(key) %> flash flash-success alert alert-dismissible fade show" role="alert">
-  <span><strong>Yay!</strong> <%= value %>   </span>
+  <span> <%= value %>   </span>
   <a data-dismiss="alert" aria-label="Close">
     <i class="fas fa-times"></i>
   </a>
@@ -10,8 +10,8 @@
 
 <% elsif key == "notice" %>
 
-<div class="alert alert-success flash flash-success alert alert-dismissible fade show" role="alert">
-  <span> You have <%= value %>   </span>
+<div class="alert alert-success m-0" role="alert">
+  <span> <%= value %>   </span>
   <a data-dismiss="alert" aria-label="Close">
     <i class="fas fa-times"></i>
   </a>
@@ -20,7 +20,7 @@
 <% elsif key == "error" %>
 
 <div class="<%= flash_class(key) %> flash flash-danger flash-dismissible fade show" role="alert">
-  <span><strong>Oops!</strong> a problem has occurred while processing your <%= value %>.   </span>
+  <span> <%= value %>.   </span>
   <a data-dismiss="alert" aria-label="Close">
     <i class="fas fa-times"></i>
   </a>
