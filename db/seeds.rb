@@ -4,30 +4,38 @@
 # creates an Aria Stark user plus 10 random users
 # if a seeding fails it is due to repetition in the email (having mutiple exact same names)
 
-puts 'Cleaning user table...'
+require 'faker'
+puts 'Cleaning tables users, items, transactions...'
 Item.destroy_all
 User.destroy_all
+Transaction.destroy_all
 
 puts 'Creating seeds users...'
 
 users = []
 
-puts "Created user Aria Stark"
+puts "Created user Arya Stark"
 
 users << {
-    first_name: 'Aria',
+    first_name: 'Arya',
     last_name: 'Stark',
-    user_location: 'University of Winterfel',
+    user_location: 'Universidade de Lisboa',
     password: '123456',
-    email: 'ariastark@mat3rial.com'
+    email: 'aryastark@mat3rial.com',
+    remote_photo_url: "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567112640/Arya_ygorju.jpg"
   }
+
+puts "User Arya Stark created"
 
 name_array = []
 
-20.times {
+8.times {
 
-  f_name = ['Joao', 'Antonio', 'Julius', 'Rita', 'Ijoline', 'Karim'].sample
-  l_name = ['Muller', 'Laia', 'Ussene', 'Homphomsiltham', 'Oliveira', 'Fernandes', 'Sousa'].sample
+  # f_name = ['Joao', 'Antonio', 'Julius', 'Rita', 'Ijoline', 'Karim'].sample
+  # l_name = ['Muller', 'Laia', 'Ussene', 'Homphomsiltham', 'Oliveira', 'Fernandes', 'Sousa'].sample
+  f_name = Faker::Name.first_name
+  l_name = Faker::Name.last_name
+
   username ="#{f_name + l_name}"
 
   name_array << "#{f_name +" "+ l_name}"
@@ -36,14 +44,14 @@ name_array = []
     # puts "** Generating user #{f_name +" "+ l_name}"
 
     puts "   ** #{f_name +" "+ l_name}"
-    user_photo_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922525/Brad_mpmfwz.jpg"
+    # user_photo_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922525/Brad_mpmfwz.jpg"
     users << {
       first_name: f_name,
       last_name: l_name,
-      user_location:      ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
+      user_location:      ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School, Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
       password:           "123456",
       email:              "#{username}@mat3rial.com",
-      remote_photo_url: user_photo_url
+      remote_photo_url: Faker::Avatar.image( size: "50x50")
     }
     puts "      << user added"
   else
@@ -60,24 +68,49 @@ puts '>> Finished creating Users! <<'
 # seeding for items
 
 
-puts 'Cleaning Items table...'
-Item.destroy_all
+# puts 'Cleaning Items table...'
+# Item.destroy_all
 
-puts 'Creating seeds Items...'
+puts 'Creating seeds items...'
 items = []
 
-stationary_url = "https://res.cloudinary.com/dstl9dcq5/image/upload/v1566922180/Stationary_p3ikbs.jpg"
-10.times {
+stationery_array = ['Staples Composition Notebook', 'Texas Instruments TI-84', 'Crayola® Crayons - Box 24', 'Hammermill Copy Plus', 'Post-it® Super Sticky Notes','Fucking Brilliant Pencils']
+photo_array = ["https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118529/PUR/notebook_k79rkn.jpg",
+              "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118530/PUR/TI842_jn8n2d.jpg",
+              "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118530/PUR/Crayola_iblnow.jpg",
+              "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118529/PUR/Hammer_wjzt6t.jpg",
+              "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118529/PUR/postit_etbfft.jpg",
+              "https://res.cloudinary.com/dstl9dcq5/image/upload/v1567118529/PUR/pencils_kn2lok.webp"]
+category_array = %w[Stationary Electronic Stationary Paper Other Stationary]
+11.times {
+  i = (1..5).to_a.sample - 1
   items << {
-    description: ['beatuiful state', 'like new, 9.75 x 7.5', 'N/A', 'Black'].sample,
-    category: Item::ITEM_TYPES.sample,
-    price: "#{(rand * 10_000).floor / 100}",
-    location: ['Universidade Lisboa', 'Universidade de São Paulo', 'Universidade Agustinho Neto', 'E.S.T.E.', 'SLB'].sample,
+    description: ['Brand new', 'Used', 'Old, but functioning'].sample,
+    category: category_array[i],
+    price: "#{(rand * 1000).floor / 100}",
+    location: ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School', 'Faculty of Social and Human Sciences', 'National School of Public Health', 'IST, Lisbon', 'UMC, Lisbon','Escola Politécnica de Lisboa'].sample,
     user_id: User.all.sample.id,
-    title: ['Staples Composition Notebook', 'Texas Instruments TI-84', 'Crayola® Crayons, 24/Box', 'Hammermill Copy Plus', 'Post-it® Super Sticky Notes'].sample,
-    remote_photo_url: stationary_url
+    title: stationery_array[i],
+    remote_photo_url: photo_array[i]
   }
 }
 Item.create!(items)
 puts '>> Finished creating Items! <<'
+
+# -----------------------------------------------------------------------------
+
+# transaction for items
+puts 'Creating seeds transactions...'
+transactions = []
+
+20.times{
+  transactions << {
+    user_id: User.all.sample.id,
+    item_id: Item.all.sample.id,
+    status: %w(accepted decline pending).sample
+  }
+}
+Transaction.create!(transactions)
 puts 'Finished!'
+
+

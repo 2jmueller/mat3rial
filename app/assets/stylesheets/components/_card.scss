@@ -12,10 +12,30 @@
   margin: 15px;
   width: 300px;
   box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 2px;
 }
 
 .card-info:hover{
   margin: 15px;
-  box-shadow: none
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 2px;
 }
 
+.card-img-top {
+  object-fit:contain;
+  height: 400px;
+}
+
+.image-card{
+  // object-fit: fill;
+}
+
+.card-top{
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
