@@ -53,12 +53,22 @@
             <%= link_to 'sold', "#", class: "btn btn-outline-secondary disabled btn-sm btn-block p-2", style:"width:100%"%>
             <%# link_to 'See Location', '/', class: "btn btn-outline-secondary disabled btn-sm py-2 px-4"%>
             </div>
+
           <!-- elsif there is a pending transaction -->
           <% elsif @item.transactions.where(status: "pending").any? %>
             <div class="card-body d-flex justify-content-center">
             <%= link_to 'Pending', "#", class: "btn btn-outline-secondary disabled btn-sm btn-block p-2", style:"width:100%"%>
             <%#= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
             </div>
+
+          <!-- elsif the item belongs to the user -->
+          <% elsif @item.user == current_user %>
+            <div class="card-body d-flex justify-content-center">
+            <%= link_to 'This item is yours', "#", class: "btn btn-outline-secondary disabled btn-sm btn-block p-2", style:"width:100%"%>
+            <%#= link_to 'See Location', '/', class: "btn btn-success btn-sm py-2 px-4"%>
+            </div>
+
+
           <!-- else, if there are no transactions, or only declined ones then its business as usual -->
           <% else %>
             <div class="card-body d-flex justify-content-center">
@@ -68,6 +78,8 @@
           <% end %>
         </div>
 
+      <!-- Seller info -->
+      <% if user_signed_in? %>
       <div class="card-info">
         <div class="card-header text-capitalize text-muted d-flex align-content-center">
           <div class="container-avatar pr-3">
@@ -85,5 +97,27 @@
           </div>
         </div>
       </div>
+
+      <% else %>
+      <div class="card-info">
+        <div class="card-header text-capitalize text-muted d-flex align-content-center">
+          <div class="container-avatar pr-3" style="filter: blur(5px)">
+            <%= cl_image_tag @item.user.photo, class: "avatar" %>
+          </div>
+          <div class="container-title flex-end">
+            <h5>Seller</h5>
+          </div>
+        </div>
+        <div class="card-body" style="filter: blur(5px)">
+          <p><i class="fas fa-user text-muted pr-2"></i><%= @item.user.first_name %> <%= @item.user.last_name %></p>
+          <p><i class="fas fa-map-marker-alt text-muted pr-2"></i>from <%= @item.location %></p>
+          <div class="pt-1">
+            <%= link_to 'Contact seller', '/', class: "btn btn-outline-secondary btn-sm btn-block p-2 disabled ;"%>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
   </div>
 </div>
