@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   # controller actions for the Items model
+  before_action :find_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index]
   def index
     # list all the items in the database
@@ -14,7 +15,6 @@ class ItemsController < ApplicationController
 
   def show
     # show a specific item on click
-    @item = Item.find(params[:id])
   end
 
   def new
@@ -35,23 +35,35 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    # edit an existing item
   end
 
   def update
     # finds the item to update by id and updates it with the necessary params
-    @item = Item.find(params[:id])
     @item.update(item_params)
+    if @item.save
+      redirect_to user_path(current_user), notice: "updated the item successfully"
+    else
+      redirect_to user_path
+    end
   end
 
   def destroy
     # finds by id and deletes item
-    @item = Item.find(params[:id])
-    @item.destroy
+    if @item.user_id == current_user.id
+      @item.destroy!
     # redirect to user profile page
+      redirect_to user_path(current_user), notice: "deleted the item"
+    else
+      redirect_to root_path, notice: "tried to be a naughty boy and delete an item that isn't yours"
+    end
   end
 
   private
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:title, :description, :category, :price, :location, :photo)
