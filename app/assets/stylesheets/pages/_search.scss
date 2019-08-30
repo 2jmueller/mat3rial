@@ -15,7 +15,9 @@
 }
 
 .card-img-left {
-  height: 100%;
+  object-fit: contain;
+  width: 150px;
+  height: auto;
 }
 
 .input-search {
