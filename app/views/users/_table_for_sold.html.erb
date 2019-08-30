@@ -10,7 +10,7 @@
         <th scope="col">Price</th>
         <th scope="col">Posting date</th>
         <th scope="col">Details</th>
-        <th scope="col">Status</th>
+<!--         <th scope="col">Status</th> -->
       </tr>
     </thead>
 <!-- body of item on sell -->
@@ -30,23 +30,23 @@
                 <p><i class="fas fa-glasses text-muted"></i></p>
               <% end %>
         </td>
-        <td>
-          <% if item.transactions.where(status: 'pending').any? %>
+        <!-- <td>
+          <%# if item.transactions.where(status: 'pending').any? %>
             <p>Pending your approval
             <%#= link_to accept_item_transaction_path(item, item.transactions.where(status: 'pending').where(user: current_user).last), method: :patch do%>
-            <%= link_to accept_item_transaction_path(item, item.transactions.where(status: 'pending').ids), method: :patch do%>
+            <%#= link_to accept_item_transaction_path(item, item.transactions.where(status: 'pending').ids), method: :patch do%>
               <i class="fas fa-check-circle text-success"></i>
-            <% end %>
+            <#% end %>
             <%#= link_to decline_item_transaction_path(item, item.transactions.where(status: 'pending').where(user: current_user).last), method: :patch do%>
-            <%= link_to decline_item_transaction_path(item, item.transactions.where(status: 'pending').ids), method: :patch do%>
+            <#%= link_to decline_item_transaction_path(item, item.transactions.where(status: 'pending').ids), method: :patch do%>
               <i class="fas fa-times-circle text-danger"></i>
-            <% end %>
+            <#% end %>
             </p>
           ​
-          <% else %>
+          <#% else %>
             <p>For sell</p>
-          <% end %>
-        </td>
+          <#% end %>
+        </td> -->
       </tr>
     <% end %>
     </tbody>
