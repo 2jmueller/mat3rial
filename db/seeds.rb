@@ -62,7 +62,7 @@ name_array = []
     users << {
       first_name: f_name,
       last_name: l_name,
-      user_location:      ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School, Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
+      user_location:      ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
       password:           "123456",
       email:              "#{username}@mat3rial.com",
       remote_photo_url: Faker::Avatar.image( size: "50x50")
@@ -102,7 +102,7 @@ category_array = %w[Stationary Electronic Stationary Paper Other Stationary]
     description: ['Brand new', 'Used', 'Old, but functioning'].sample,
     category: category_array[i],
     price: "#{(rand * 1000).floor / 100}",
-    location: ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Nova Medical School, Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
+    location: ['Universidade Lisboa', 'Universidade NOVA de Lisboa', 'Faculty of Social and Human Sciences, Lisboa', 'National School of Public Health, Lisboa', 'UMC, Lisboa','Escola Politécnica de Lisboa'].sample,
     user_id: User.all.sample.id,
     title: stationery_array[i],
     remote_photo_url: photo_array[i]
